@@ -5,9 +5,9 @@ const Navbar = () => {
 
 	const navOptions = 
 					<>
-						<li className='font-semibold'><Link to='/menu'><a>Our Menu</a></Link></li>
+						<li className='font-semibold btn btn-sm btn-info'><Link to='/menu'><a>Our Menu</a></Link></li>
 						
-						<li className='font-semibold'><Link to={'/order'}><a>Order</a></Link></li>
+						<li className='font-semibold btn btn-sm btn-info'><Link to={'/order/salad'}><a>Order</a></Link></li>
 					</>
 	return (
 		<div>
@@ -36,8 +36,8 @@ const Navbar = () => {
 						</div>
 						<Link to={'/'}><a className="btn btn-ghost text-xl">Bistro Boss</a></Link>
 					</div>
-					<div className="navbar-center hidden lg:flex">
-						<ul className="menu menu-horizontal px-1">
+					<div className="navbar-center hidden lg:flex gap-2">
+						<ul className="menu menu-horizontal gap-2 px-1">
 						{navOptions}
 						</ul>
 					</div>
