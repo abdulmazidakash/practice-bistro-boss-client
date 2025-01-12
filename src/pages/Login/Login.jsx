@@ -3,6 +3,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../shared/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -12,6 +13,8 @@ const Login = () => {
 	const location = useLocation();
 
 	const from = location.state?.from?.pathname || "/";
+
+	console.log('state in the location login page', location?.state);
 
 	// const captchaRef = useRef(null);
 	const [disabled, setDisabled] = useState(true);
@@ -98,16 +101,22 @@ const Login = () => {
 						<label className="label">
 						<LoadCanvasTemplate />
 						</label>
-						<input onBlur={handleValidateCaptcha}  name='captcha' type="text" placeholder="type the captcha above" className="input input-bordered" required />
+						<input 
+						onBlur={handleValidateCaptcha} 
+						disabled={false}  
+						name='captcha' type="text" 
+						placeholder="type the captcha above" 
+						className="input input-bordered" />
 
 						</div>
 						<div className="form-control mt-6">
 						
-						<input disabled={disabled} className="btn btn-primary" type="submit" value="Submit" />
+						<input className="btn btn-primary" type="submit" value="Submit" />
 						</div>
 					</form>
 					<p>New here <Link to={'/signUp'}>Sign Up</Link></p>
 					</div>
+					<SocialLogin/>
 				</div>
 			</div> 
 		</div>
