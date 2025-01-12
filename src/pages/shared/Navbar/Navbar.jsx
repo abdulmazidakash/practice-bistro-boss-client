@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
 
+	const {user, logout} = useContext(AuthContext);
+
+	const handleLogout = ()=>{
+		logout()
+			.then(()=> { })
+			.catch(err => console.log(err))
+	}
+
 	const navOptions = 
-					<>
-						<li className='font-semibold btn btn-sm btn-info'><Link to='/menu'><a>Our Menu</a></Link></li>
-						
-						<li className='font-semibold btn btn-sm btn-info'><Link to={'/order/salad'}><a>Order</a></Link></li>
-					</>
+			<>
+				<li className='font-semibold btn btn-sm btn-info'><Link to='/menu'><button>Our Menu</button></Link></li>
+				
+				<li className='font-semibold btn btn-sm btn-info'><Link to={'/order/salad'}><button>Order</button></Link></li>
+				<li className='font-semibold btn btn-sm btn-info'><Link to={'/secret'}><button>Secret</button></Link></li>
+				<li ><button className="btn">
+					<FaShoppingCart/>
+					<div className="badge  badge-secondary">+0</div>
+					</button></li>
+				
+				{ user? 
+				<> <button onClick={handleLogout} className="btn btn-sm btn-info">Logout</button></> : 
+				<><li className='font-semibold btn btn-sm btn-info'><Link to={'/login'}><button>Login</button></Link></li></>
+				}
+			</>
 	return (
 		<div>
 			<div className="navbar max-w-screen-xl mx-auto bg-opacity-30 bg-black z-10 fixed text-white">
@@ -30,11 +50,11 @@ const Navbar = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+							className="menu menu-sm gap-2 dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
 						{navOptions}
 						</ul>
 						</div>
-						<Link to={'/'}><a className="btn btn-ghost text-xl">Bistro Boss</a></Link>
+						<Link to={'/'}><button className="btn btn-ghost text-xl">Bistro Boss</button></Link>
 					</div>
 					<div className="navbar-center hidden lg:flex gap-2">
 						<ul className="menu menu-horizontal gap-2 px-1">
