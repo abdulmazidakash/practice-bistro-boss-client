@@ -114,9 +114,9 @@ const Login = () => {
 						<input className="btn btn-primary" type="submit" value="Submit" />
 						</div>
 					</form>
-					<p>New here <Link to={'/signUp'}>Sign Up</Link></p>
-					</div>
+					<p>New here <Link className='text-red-600 font-bold' to={'/signUp'}>Sign Up</Link></p>
 					<SocialLogin/>
+					</div>
 				</div>
 			</div> 
 		</div>
